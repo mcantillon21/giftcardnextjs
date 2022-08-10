@@ -1,0 +1,62 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+}
+
+thead.table-header > tr {
+  color: hsl(215, 25%, 100%);
+  background-color: hsl(215, 80%, 20%);
+}
+
+tbody > tr:nth-child(even) {
+  background-color: hsl(215, 50%, 93%);
+}
+
+tbody th {
+  font-size: 1.125rem;
+}
+
+td, th {
+  padding: 0.5rem;
+}
+
+[data-test=table-foot] > tr {
+  display: none;
+}
+
+[data-test=datatable-search] {
+  justify-content: center !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+[data-test=datatable] thead tr th {
+  word-wrap: break-word;
+  word-break: break-all;
+  autoWidth: true;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
