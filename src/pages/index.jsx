@@ -1,17 +1,14 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
 import * as React from "react";
 import { render } from "react-dom";
 import { animated, useSpring } from "react-spring";
 import { useScroll } from "react-use-gesture";
-import Link from 'next/link';
+import Link from "next/link";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-
-
 export default function Home() {
-
   const movies = [
     "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6421/6421949_sd.jpg",
     "https://cdn.shopify.com/s/files/1/0036/4806/1509/products/21099f2ee125c96ed893bf4cf5c7b0f5a618e68a_square2830419_1.jpg?v=1634330029",
@@ -19,7 +16,7 @@ export default function Home() {
     "https://i.imgur.com/9dprIE8.png",
     "https://jenis.cardfoundry.com/merch/jenis/images/giftcard_images/card_jenisCRD.png?t=1608648889",
     "https://d.comenity.net/ac/jcrew/images/Client/CardArt/CreditCardLarge.png",
-    "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6389/6389631_sd.jpg", 
+    "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6389/6389631_sd.jpg",
   ];
 
   const clamp = (value) => {
@@ -29,16 +26,16 @@ export default function Home() {
       return value < -60 ? -60 : value;
     }
   };
-  
+
   const [style, set] = useSpring(() => ({
-    transform: "perspective(500px) rotateY(0deg)"
+    transform: "perspective(500px) rotateY(0deg)",
   }));
-  
-  const bind = useScroll(event => {
+
+  const bind = useScroll((event) => {
     set({
       transform: `perspective(500px) rotateY(${
         event.scrolling ? clamp(event.delta[0]) : 0
-      }deg)`
+      }deg)`,
     });
   });
 
@@ -51,26 +48,22 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Save your gift card scraps.
-        </h1>
+        <h1 className={styles.title}>Save your gift card scraps.</h1>
 
         <div className={styles.grid}>
           <Link href="/redeem">
-            <a className={styles.card2}>
-            Redeem
-            </a>
+            <a className={styles.card2}>Redeem</a>
           </Link>
         </div>
 
         <div className={styles.container2} {...bind()}>
-          {movies.map(src => (
+          {movies.map((src) => (
             <animated.div
               key={src}
               className={styles.card}
               style={{
                 ...style,
-                backgroundImage: `url(${src})`
+                backgroundImage: `url(${src})`,
               }}
             />
           ))}
@@ -120,5 +113,5 @@ export default function Home() {
         </a>
       </footer> */}
     </div>
-  )
+  );
 }
